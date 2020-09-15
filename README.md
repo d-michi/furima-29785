@@ -35,6 +35,8 @@
 
 | Column                      | Type       | Options                        |
 | --------------------------- | ---------- | ------------------------------ |
+| item_name                   | string     | null: false                    |
+| item_explain                | text       | null: false                    |
 | price                       | integer    | null: false                    |
 | user                        | references | null: false, foreign_key: true |
 | prefecture_id               | integer    | null: false                    |
