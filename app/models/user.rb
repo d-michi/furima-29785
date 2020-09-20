@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :nickname, :email, :password, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date, presence: true
   
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'は全角文字を使用してください' } do
+  with_options presence: true, format: { with: /\A[ァ-ン]+\z/, message: 'は全角文字を使用してください' } do
     validates :first_name
     validates :last_name
     validates :first_name_kana
