@@ -9,9 +9,9 @@ class Item < ApplicationRecord
  belongs_to_active_hash :item_shipping_fee_status
  belongs_to_active_hash :item_scheduled_delivery
 
- validates :item_name, :item_explain, :price, :prefecture, :item_category, :item_sales_status, :item_shipping_fee_status, :item_scheduled_delivery, presence: true
+ validates :item_name, :item_explain, :price, :prefecture_id, :item_category_id, :item_sales_status_id, :item_shipping_fee_status_id, :item_scheduled_delivery_id, presence: true
 
  with_options numericality: { other_than: 0 } do
-  validates :prefecture_id, :item_category, :item_sales_status, :item_shipping_fee_status, :item_scheduled_delivery
+  validates :prefecture_id, :item_category_id, :item_sales_status_id, :item_shipping_fee_status_id, :item_scheduled_delivery_id
  end
 end
