@@ -14,24 +14,31 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @prefectre = Prefecture.all
+    @category = ItemCategory.all
+    @sales_status = ItemSalesStatus.all
+    @scheduled_delivery = ItemScheduledDelivery.all
+    @shipping_fee_status = ItemShippingFeeStatus.all
+    
     if @item.save
       redirect_to items_path
     else
-      redirect_to new_item_path
+      render action: "new.html.erb"
     end
   end
 
   private
-   def item_params
+
+  def item_params
     params.require(:item).permit(:image, :item_name, :item_explain, :price, :prefecture_id, :item_category_id, :item_sales_status_id, :item_shipping_fee_status_id, :item_scheduled_delivery_id).merge(user_id: current_user.id)
-   end
   end
+end
 
-  def edit
-  end
+def edit
+end
 
-  def update
-  end
+def update
+end
 
-  def show
-  end
+def show
+end

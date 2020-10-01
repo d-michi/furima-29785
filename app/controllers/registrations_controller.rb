@@ -11,14 +11,14 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(user_params)
-   #バリデーションで問題があれば、保存はされず「投稿画面」に戻る
-   if @user.valid?
-     @user.save
-     redirect_to root_path
-   else
-     #保存されなければ、newに戻る
-     render 'new'
-   end
+    # バリデーションで問題があれば、保存はされず「投稿画面」に戻る
+    if @user.valid?
+      @user.save
+      redirect_to root_path
+    else
+      # 保存されなければ、newに戻る
+      render 'new'
+    end
   end
 
   def edit
