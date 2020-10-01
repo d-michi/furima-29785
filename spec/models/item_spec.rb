@@ -28,8 +28,18 @@ describe Item do
       @item.valid?
       expect(@item.errors.full_messages).to include('カテゴリーを入力してください')
     end
+    it 'item_category_idが0では登録できない' do
+      @item.item_category_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include('カテゴリーを入力してください')
+    end
     it 'item_sales_status_idが空では登録できない' do
       @item.item_sales_status_id = ''
+      @item.valid?
+      expect(@item.errors.full_messages).to include('商品の状態を入力してください')
+    end
+    it 'item_sales_status_idが0では登録できない' do
+      @item.item_sales_status_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include('商品の状態を入力してください')
     end
@@ -38,13 +48,28 @@ describe Item do
       @item.valid?
       expect(@item.errors.full_messages).to include('配送料の負担を入力してください')
     end
+    it 'item_shipping_fee_status_idが0では登録できない' do
+      @item.item_shipping_fee_status_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include('配送料の負担を入力してください')
+    end
     it 'prefecture_idが空では登録できない' do
       @item.prefecture_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include('発送元の地域を入力してください')
     end
+    it 'prefecture_idが0では登録できない' do
+      @item.prefecture_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include('発送元の地域を入力してください')
+    end
     it 'item_scheduled_delivery_idが空では登録できない' do
       @item.item_scheduled_delivery_id = ''
+      @item.valid?
+      expect(@item.errors.full_messages).to include('発送までの日数を入力してください')
+    end
+    it 'item_scheduled_delivery_idが0では登録できない' do
+      @item.item_scheduled_delivery_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include('発送までの日数を入力してください')
     end

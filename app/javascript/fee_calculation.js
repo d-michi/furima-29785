@@ -1,16 +1,4 @@
-// $(function(){
-//   $("#price").on('keyup', function(){
-//     console.log(111)
-//     var price = $("#price").val(); //100
-//     var fee = Math.floor(price * 0.1); //10
-//     var profit = (price - fee); //90
-//     $(".add-tax-price").text(fee);
-//     $(".profit").text(profit);
-//     $(".add-tax-price").text('');
-//     $(".profit").text('');
-//   })
-// });
-
+//エラーが出た場合はconsole.logで確認する console.log("test1")など
 window.addEventListener("DOMContentLoaded", () => {
   const price = document.getElementById("price");
   const addTaxDom = document.getElementById("add-tax-price");
