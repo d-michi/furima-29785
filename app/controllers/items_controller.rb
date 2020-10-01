@@ -19,11 +19,11 @@ class ItemsController < ApplicationController
     @sales_status = ItemSalesStatus.all
     @scheduled_delivery = ItemScheduledDelivery.all
     @shipping_fee_status = ItemShippingFeeStatus.all
-    
+
     if @item.save
       redirect_to items_path
     else
-      render action: "new.html.erb"
+      render action: 'new.html.erb'
     end
   end
 
