@@ -5,6 +5,10 @@ class ItemsController < ApplicationController
     @items = Item.all.order('created_at DESC')
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def new
     @item = Item.new
   end
@@ -20,13 +24,21 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+
+    if @item.save
+      redirect_to items_path
+    else
+      render 'edit'
+    end
   end
 
-  def show
-    @item = Item.find(params[:id])
+  def destroy
   end
 
   private
