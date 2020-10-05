@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
 
   def signed_in
     if user_signed_in? && current_user.id == @item.user.id
-      link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" 
+      redirect_to edit_item_path(@item.id)
     else 
       redirect_to items_path
     end 
