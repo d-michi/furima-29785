@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
@@ -25,7 +26,7 @@ class ItemsController < ApplicationController
 
   def edit
     if current_user.id != @item.user.id
-      redirect_to root_path 
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -40,7 +41,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    redirect_to root_path if @item.destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render 'edit'
+    end
   end
 
   private
