@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   # get 'items/edit', to: 'items#edit'
 
   resources :users
-  resources :items, only: [:index, :show, :new, :create, :edit, :update]
+  resources :items
 end
