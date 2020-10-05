@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update]
+  before_action :signed_in, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -49,5 +50,13 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def signed_in
+    if user_signed_in? && current_user.id == @item.user.id
+      link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" 
+    else 
+      redirect_to items_path
+    end 
   end
 end
