@@ -24,8 +24,8 @@ RSpec.describe ItemAddress, type: :model do
       @item_address.valid?
       expect(@item_address.errors.full_messages).to include('郵便番号を入力してください')
     end
-    it 'prefecture_idが空では保存ができないこと' do
-      @item_address.prefecture_id = nil
+    it 'prefecture_idが0では保存ができないこと' do
+      @item_address.prefecture_id = 0
       @item_address.valid?
       expect(@item_address.errors.full_messages).to include('都道府県を入力してください')
     end
@@ -45,12 +45,12 @@ RSpec.describe ItemAddress, type: :model do
       expect(@item_address.errors.full_messages).to include('電話番号を入力してください')
     end
     it 'postal_codeにハイフンがなければ保存ができないこと' do
-      @item_address.postal_code = /\A\d{3}[-]\d{4}\z/
+      @item_address.postal_code = '12345678'
       @item_address.valid?
       expect(@item_address.errors.full_messages).to include('郵便番号はハイフンが必要です')
     end
     it 'phone_numberにはハイフンは不要で11桁以内でないと保存ができないこと' do
-      @item_address.phone_number = /\A\d{10,11}\z/
+      @item_address.phone_number = '1234567891011'
       @item_address.valid?
       expect(@item_address.errors.full_messages).to include('電話番号は11桁以内です')
     end

@@ -3,7 +3,8 @@ class ItemAddress
   attr_accessor :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
-    validates :prefecture_id, :city, :addresses, :token
+    validates :city, :addresses, :token
+    validates :prefecture_id, numericality: { other_than: 0, message: 'を入力してください' }
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'はハイフンが必要です' }
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'は11桁以内です' }
   end
