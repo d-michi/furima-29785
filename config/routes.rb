@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   post 'items', to: 'items#create'
   # get 'items/edit', to: 'items#edit'
 
+  
   resources :users
-  resources :items
+  resources :items do
+    resources :orders, only:[:index, :create]
+  end
+
 end
