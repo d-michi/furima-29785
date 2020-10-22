@@ -27,6 +27,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       const blob = window.URL.createObjectURL(file);
 
       createImageHTML(blob);
+
     });
   });
 }
